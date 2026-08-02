@@ -274,7 +274,9 @@
     display:flex;align-items:center;justify-content:center;
     font-family:'Manrope',sans-serif;font-weight:800;font-size:96px;color:var(--accent);
     max-width:380px;
+    overflow:hidden;
   }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
   .about-copy p{color:var(--text-dim);font-size:16px;margin-bottom:20px;}
   .timeline{margin-top:36px;display:flex;flex-direction:column;gap:22px;}
   .tl-item{border-left:2px solid var(--line);padding-left:20px;position:relative;}
@@ -646,7 +648,7 @@
 <section class="pad" id="about">
   <div class="wrap about-grid">
     <div class="reveal">
-      <div class="avatar">RS</div>
+      <div class="avatar"><img src="headshot.jpg" alt="Rajalakshmi Sadagopan"></div>
     </div>
     <div class="about-copy reveal">
       <div class="eyebrow">About me</div>
