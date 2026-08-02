@@ -215,6 +215,36 @@
     font-size:13px;color:var(--text-dim);border:1px solid var(--line);padding:8px 16px;border-radius:999px;
   }
 
+  /* ---------- TOOLS USED (scrolling marquee) ---------- */
+  .marquee-wrap{
+    overflow:hidden;position:relative;margin:0 -32px;padding:0 32px;
+    -webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);
+    mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent);
+  }
+  .marquee-track{
+    display:flex;gap:16px;width:max-content;animation:marquee-scroll 34s linear infinite;
+  }
+  .marquee-track:hover{animation-play-state:paused;}
+  @keyframes marquee-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .tool-pill{
+    display:flex;align-items:center;gap:12px;flex:0 0 auto;
+    padding:14px 22px;border:1px solid var(--line);border-radius:999px;background:var(--card);
+    transition:border-color .25s ease;
+  }
+  .tool-pill:hover{border-color:var(--accent);}
+  .tool-logo{
+    width:22px;height:22px;flex:0 0 auto;background-color:var(--text-dim);
+    transition:background-color .25s ease;
+    mask-repeat:no-repeat;mask-position:center;mask-size:contain;
+    -webkit-mask-repeat:no-repeat;-webkit-mask-position:center;-webkit-mask-size:contain;
+  }
+  .tool-pill:hover .tool-logo{background-color:var(--accent);}
+  .tool-pill span{font-size:14px;color:var(--text-dim);font-weight:600;white-space:nowrap;transition:color .25s ease;}
+  .tool-pill:hover span{color:var(--text);}
+
   /* ---------- RESULTS WALL (scrollable) ---------- */
   .results-scroll-hint{font-size:13px;color:var(--text-dim);margin-bottom:20px;}
   .results-grid{
@@ -541,6 +571,18 @@
   </div>
 </section>
 
+<section class="pad tight" id="tools-used">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Tools I use</div>
+      <h2>The stack behind the strategy.</h2>
+    </div>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="toolsMarquee"></div>
+  </div>
+</section>
+
 <section class="pad tight" id="services">
   <div class="wrap">
     <div class="section-head reveal">
@@ -670,6 +712,36 @@
 </section>
 
 <script>
+  // Tools I use, scrolling marquee
+  const TOOLS = [
+    { name: 'Meta', slug: 'meta' },
+    { name: 'Google Ads', slug: 'googleads' },
+    { name: 'Microsoft Office', slug: 'microsoftoffice' },
+    { name: 'Hootsuite', slug: 'hootsuite' },
+    { name: 'Claude', slug: 'claude' },
+    { name: 'ChatGPT', slug: 'openai' },
+    { name: 'Asana', slug: 'asana' },
+    { name: 'Mailchimp', slug: 'mailchimp' },
+    { name: 'HubSpot', slug: 'hubspot' },
+    { name: 'Google Analytics', slug: 'googleanalytics' },
+    { name: 'Canva', slug: 'canva' },
+    { name: 'Slack', slug: 'slack' },
+    { name: 'WordPress', slug: 'wordpress' },
+    { name: 'Shopify', slug: 'shopify' },
+    { name: 'Semrush', slug: 'semrush' }
+  ];
+  const toolsMarquee = document.getElementById('toolsMarquee');
+  if(toolsMarquee){
+    const iconUrl = (slug) => `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${slug}.svg`;
+    const pillHtml = TOOLS.map(t => `
+      <div class="tool-pill">
+        <span class="tool-logo" style="mask-image:url('${iconUrl(t.slug)}');-webkit-mask-image:url('${iconUrl(t.slug)}');"></span>
+        <span>${t.name}</span>
+      </div>`).join('');
+    // duplicate the list so the scroll loops seamlessly
+    toolsMarquee.innerHTML = pillHtml + pillHtml;
+  }
+
   // Interactive work switcher
   const workNavItems = document.querySelectorAll('.work-nav-item');
   const workCases = document.querySelectorAll('.work-case');
