@@ -111,6 +111,16 @@
   section.pad{padding:120px 0;}
   section.pad.tight{padding:100px 0;}
 
+  /* ---------- SECTION TONE RHYTHM ---------- */
+  /* Alternating background rhythm across sections, kept within the same
+     light indigo family so it reads as intentional pacing, not noise. */
+  .tone-base{background:var(--bg);}
+  .tone-soft{background:var(--bg-soft);}
+  .tone-card{background:var(--card);}
+  section.tone-base,
+  section.tone-soft,
+  section.tone-card{border-top:1px solid var(--line);}
+
   /* ---------- METRIC HIGHLIGHT ---------- */
   .metric-block{
     background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
@@ -382,7 +392,7 @@
   </div>
 </section>
 
-<section class="pad" id="work">
+<section class="pad tone-card" id="work">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Selected work</div>
@@ -573,7 +583,7 @@
   </div>
 </section>
 
-<section class="pad tight" id="tools-used">
+<section class="pad tight tone-base" id="tools-used">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Tools I use</div>
@@ -585,7 +595,7 @@
   </div>
 </section>
 
-<section class="pad tight" id="services">
+<section class="pad tight tone-soft" id="services">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Core skills</div>
@@ -627,7 +637,7 @@
   </div>
 </section>
 
-<section class="pad tight">
+<section class="pad tight tone-card">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Proof, not promises</div>
@@ -645,7 +655,7 @@
   </div>
 </section>
 
-<section class="pad" id="about">
+<section class="pad tone-base" id="about">
   <div class="wrap about-grid">
     <div class="reveal">
       <div class="avatar"><img src="headshot.jpg" alt="Rajalakshmi Sadagopan"></div>
